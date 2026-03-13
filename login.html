@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="Auth_login.js" defer></script>
+  </head>
+  <body>
+    <section>
+      <h2 class="title">Connectez-vous à votre compte</h2>
+      <form action="login.php" method="post" id="login">
+        <label for="username">Nom d'utilisateur</label>
+        <div class="user">
+          <input type="text" name="username" id="username" />
+        </div>
+        <label for="Password">Mot de passe</label>
+        <div class="pwd">
+          <input type="password" name="password" id="password" />
+          <i class="fa-solid fa-eye" id="eye"></i>
+        </div>
+        <p id="info"></p>
+        <div class="forgot-password">
+            <a href="#">Mot de passe oublié ?</a>
+        </div>
+        <input type="submit" value="Se connecter" name="send" id="send" />
+        <h3>Vous n'avez pas de compte ?</h3>
+        <a href="register.html" class="link-register"
+          >Inscrivez-vous maintenant</a
+        >
+      </form>
+    </section>
+  </body>
+</html>

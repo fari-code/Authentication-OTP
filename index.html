@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="Auth_register.js" defer></script>
+  </head>
+  <body>
+    <section>
+      <h2><i class="fa-solid fa-user-plus 2xl"></i> Inscription</h2>
+      <form action="register.php" method="post" id="register">
+        <div class="user">
+          <label for="username">Nom d'utilisateur</label>
+          <input type="text" name="Username" id="username" />
+        </div>
+        <label for="Email">Email</label>
+        <input type="email" name="email" id="email" />
+        <div class="info"></div>
+        <label for="Password">Mot de passe</label>
+        <div class="pwd">
+          <input type="password" name="password" id="password" />
+          <i class="fa-solid fa-eye" id="eye"></i>
+        </div>
+        <label for="Password">Confirmez le mot de passe</label>
+        <div class="confirm-pwd">
+          <input type="password" name="password" id="pwd" />
+          <i class="fa-solid fa-eye" id="eye1"></i>
+        </div>
+        <p id="info"></p>
+        <input type="submit" value="S'inscire" name="send" />
+      </form>
+    </section>
+  </body>
+</html>
