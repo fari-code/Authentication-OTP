@@ -9,15 +9,15 @@
     />
     <title>Login</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="Auth_login.js" defer></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
     <section>
       <h2 class="title">Connectez-vous à votre compte</h2>
       <form action="login.php" method="post" id="login">
-        <label for="username">Nom d'utilisateur</label>
+        <label for="email">Email</label>
         <div class="user">
-          <input type="text" name="username" id="username" />
+          <input type="email" name="email" id="email" autocomplete="email" />
         </div>
         <label for="Password">Mot de passe</label>
         <div class="pwd">

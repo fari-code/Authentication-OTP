@@ -41,6 +41,13 @@ label {
   margin-bottom: 8px;
   color: #0f766e;
 }
+.link-back{
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+  margin-left: -15px;
+}
 .otp-box{
 display:flex;
 justify-content:space-between;

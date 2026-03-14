@@ -1,0 +1,12 @@
+# Database
+api/config/database.php
+
+# Composer vendor folder
+vendor/
+
+# Logs, cache, etc
+*.log
+*.cache
+
+# Environnement
+.env
