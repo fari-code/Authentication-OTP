@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -12,32 +12,33 @@
 <link rel="shortcut icon" href="favicon/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
 <link rel="manifest" href="favicon/site.webmanifest" />
-    <title>AuthSystem | Login</title>
+    <title>AuthSystem | Register</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="login.js" defer></script>
+    <script src="register.js" defer></script>
   </head>
   <body>
     <section>
-      <h2 class="title">Connectez-vous à votre compte</h2>
-      <form action="" method="post" id="login">
-        <label for="email">Email</label>
+      <h2><i class="fa-solid fa-user-plus 2xl"></i> Inscription</h2>
+      <form action="" method="post" id="register">
         <div class="user">
-          <input type="email" name="email" id="email" autocomplete="email" />
+          <label for="username">Nom d'utilisateur</label>
+          <input type="text" name="Username" id="username" />
         </div>
-        <label for="password">Mot de passe</label>
+        <label for="Email">Email</label>
+        <input type="email" name="email" id="email" />
+        <div class="info"></div>
+        <label for="Password">Mot de passe</label>
         <div class="pwd">
           <input type="password" name="password" id="password" />
           <i class="fa-solid fa-eye" id="eye"></i>
         </div>
-        <p id="info"></p>
-        <div class="forgot-password">
-            <a href="./forgot-password.html">Mot de passe oublié ?</a>
+        <label for="confirm_password">Confirmez le mot de passe</label>
+        <div class="confirm-pwd pwd">
+          <input type="password" name="confirm_password" id="pwd" />
+          <i class="fa-solid fa-eye" id="eye1"></i>
         </div>
-        <input type="submit" value="Se connecter" name="send" id="send" />
-        <h3>Vous n'avez pas de compte ?</h3>
-        <a href="register.html" class="link-register"
-          >Inscrivez-vous maintenant</a
-        >
+        <p id="info"></p>
+        <input type="submit" value="S'inscire" name="send" />
       </form>
     </section>
   </body>

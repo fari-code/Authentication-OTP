@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const register = document.getElementById("register");
-  register.addEventListener("submit",async (e) => {
+  register.addEventListener("submit", (e) => {
     e.preventDefault();
     const info = document.getElementById("info");
     const password = document.getElementById("password").value.trim();
@@ -38,32 +38,38 @@ document.addEventListener("DOMContentLoaded", () => {
       return regEx.test(email);
     }
 
-    
     info.textContent = "Inscription en cours...";
     info.style.color = "green";
-
-    
-      try {
-        const response = await fetch("",{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({
-            username:username,
-            email:email,
-            password:password
-          })
-        })
-        const data = await response.json()
-        if (data.status === "success"){
-
-        }else{
-
-        }
-      } catch (error) {
-        info.textContent = "Erreur serveur. Veuillez réessayer !";
+setTimeout(async()=>{
+    try {
+      const response = await fetch("./api/register.php", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: username,
+          email: email,
+          password: password,
+        }),
+      });
+      const data = await response.json();
+      console.log("Réponse du serveur:", data);
+      
+      if (data.status) {
+        info.textContent = data.message;
+        info.style.color = "green";
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1500);
+      } else {
+        info.textContent = data.message;
         info.style.color = "red";
-        
       }
+    } catch (error) {
+      console.log("Erreur:",error)
+      info.textContent = "Erreur serveur. Veuillez réessayer !";
+      info.style.color = "red";
+    }},1500)
   });
 });
 

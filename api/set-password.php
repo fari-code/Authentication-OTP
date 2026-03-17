@@ -9,29 +9,30 @@ $idUser = $_SESSION['id_user'] ?? null;
 
 if (!$idUser) {
     echo json_encode([
-        "error" => "error",
+        "status" => "error",
         "message" => "Utilisateur non identifié"
     ]);
     exit;
 }
 
 $passwordSet = $data["passwordSet"] ?? "";
-if (empty($otp)) {
+if (empty($passwordSet)) {
     echo json_encode([
-        "error" => "error",
+        "status" => "error",
         "message" => "Veuillez saisir votre nouveau mot de passe"
     ]);
     exit;
 };
 
 
-$passwordSetHash = password_hash($data["passwordSet"], PASSWORD_DEFAULT);
+$passwordSetHash = password_hash($passwordSet, PASSWORD_DEFAULT);
 $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
 $stmt->execute([
-    $passwordSetHash
+    $passwordSetHash,
+    $idUser
 ]);
 
 echo json_encode([
     "status"=>"success",
-    "message"=>"Mot de passe modifiée avec success!"
+    "message"=>"Mot de passe modifiée avec succès!"
 ]);

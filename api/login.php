@@ -11,32 +11,39 @@ $password = $data["password"] ?? "";
 
 if (empty($email) || empty($password)) {
     echo json_encode([
-        "error" => "error",
+        "status" => "error",
         "message" => "Tous les champs sont obligatoires"
     ]);
     exit;
 }
 
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo json_encode([
+        "status" => "error",
+        "message" => "Email invalide"
+    ]);
+    exit;
+}
 
 $sql = "SELECT `id`, `username`, `email`, `password` FROM `users` WHERE email = ?";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$email]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if(!$user){
-        echo json_encode([
-        "error" => "error",
+if (!$user) {
+    echo json_encode([
+        "status" => "error",
         "message" => "Email incorrect"
     ]);
-    exit;  
+    exit;
 }
 
-if (!password_verify($password,$user["password"])){
-        echo json_encode([
-        "error" => "error",
+if (!password_verify($password, $user["password"])) {
+    echo json_encode([
+        "status" => "error",
         "message" => "Mot de passe incorrect"
     ]);
-    exit;   
+    exit;
 }
 $_SESSION['id_user'] = $user["id"];
 $_SESSION['username'] = $user["username"];

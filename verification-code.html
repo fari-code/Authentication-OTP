@@ -1,27 +1,90 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+<link rel="shortcut icon" href="favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+<link rel="manifest" href="favicon/site.webmanifest" />
+    <script src="verification-code.js" defer></script>
+    <title>AuthSystem | OTP</title>
   </head>
   <body>
     <section class="section1">
-      <div class="link-back"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M18 17L10 12L18 7" stroke="#0f766e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg> <a href="#">Retour</a></div>
-      <h2 class="title1">Mot de passe oublié</h2>
-        <p>Le code de vérification a été envoyé à l'adresse e-mail johnwick@gmail.com.</p>
-      <div class="otp-box">
-        <input type="text" class="otp" maxlength="1" inputmode="numeric" pattern="\d*" autocomplete="one-time-code" autofocus/>
-        <input type="text" class="otp" maxlength="1" inputmode="numeric" pattern="\d*"/>
-        <input type="text" class="otp" maxlength="1" inputmode="numeric" pattern="\d*"/>
-        <input type="text" class="otp" maxlength="1" inputmode="numeric" pattern="\d*"/>
-        <input type="text" class="otp" maxlength="1" inputmode="numeric" pattern="\d*"/>
-        <input type="text" class="otp" maxlength="1" inputmode="numeric" pattern="\d*"/>
+      <div class="link-back">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 17L10 12L18 7"
+            stroke="#0f766e"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <a href="login.html">Retour</a>
       </div>
-      <p id="timer">Renvoyer le code dans 40 secondes</p>
+      <h2 class="title1">Mot de passe oublié</h2>
+      <p>
+        Le code de vérification a été envoyé à l'adresse
+        <span id="eamiladd"></span>.
+      </p>
+      <div class="otp-box">
+        <input
+          type="text"
+          class="otp"
+          maxlength="1"
+          inputmode="numeric"
+          pattern="\d*"
+          autocomplete="one-time-code"
+          autofocus
+        />
+        <input
+          type="text"
+          class="otp"
+          maxlength="1"
+          inputmode="numeric"
+          pattern="\d*"
+        />
+        <input
+          type="text"
+          class="otp"
+          maxlength="1"
+          inputmode="numeric"
+          pattern="\d*"
+        />
+        <input
+          type="text"
+          class="otp"
+          maxlength="1"
+          inputmode="numeric"
+          pattern="\d*"
+        />
+        <input
+          type="text"
+          class="otp"
+          maxlength="1"
+          inputmode="numeric"
+          pattern="\d*"
+        />
+        <input
+          type="text"
+          class="otp"
+          maxlength="1"
+          inputmode="numeric"
+          pattern="\d*"
+        />
+      </div>
+      <p id="link-resend">Renvoyer le code dans <span id="timer">05:00</span></p>
+      <p id="renvoie"></p>
+      <p id="info"></p>
     </section>
   </body>
 </html>

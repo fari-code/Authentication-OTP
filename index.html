@@ -1,40 +1,74 @@
-<!DOCTYPE html>
+<!-- <?php
+session_start();
+if(!isset($_SESSION['username'])){
+  header("Location:../login.html");
+    exit();
+}
+
+
+?> -->
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style-accueil.css" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon/apple-touch-icon.png"
     />
-    <title>Register</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="Auth-register.js" defer></script>
+    <link rel="manifest" href="favicon/site.webmanifest" />
+    <title>AuthSystem | Accueil</title>
   </head>
   <body>
-    <section>
-      <h2><i class="fa-solid fa-user-plus 2xl"></i> Inscription</h2>
-      <form action="register.php" method="post" id="register">
-        <div class="user">
-          <label for="username">Nom d'utilisateur</label>
-          <input type="text" name="Username" id="username" />
-        </div>
-        <label for="Email">Email</label>
-        <input type="email" name="email" id="email" />
-        <div class="info"></div>
-        <label for="Password">Mot de passe</label>
-        <div class="pwd">
-          <input type="password" name="password" id="password" />
-          <i class="fa-solid fa-eye" id="eye"></i>
-        </div>
-        <label for="confirm_password">Confirmez le mot de passe</label>
-        <div class="confirm-pwd pwd">
-          <input type="password" name="confirm_password" id="pwd" />
-          <i class="fa-solid fa-eye" id="eye1"></i>
-        </div>
-        <p id="info"></p>
-        <input type="submit" value="S'inscire" name="send" />
-      </form>
+    <header>
+      <div class="logo">AuthSystem</div>
+
+      <ul class="menu">
+        <li><a href="#">ACCUEIL</a></li>
+        <li><a href="#">CONSEILS</a></li>
+        <li><a href="#">CONTACTS</a></li>
+        <li><a href="#">BOUTIQUE</a></li>
+      </ul>
+
+      <div class="button"></div>
+    </header>
+
+    <section class="banner">
+      <div class="content">
+        <h1>Bonjour <span id="username"></span></h1>
+        <p>Bienvenue sur votre espace sécurisé.</p>
+        <a href="api/logout.php" class="btn">Se déconnecter</a>
+      </div>
     </section>
+    <script>
+      let button = document.querySelector(".button");
+      let menu = document.querySelector(".menu");
+
+      button.onclick = function () {
+        button.classList.toggle("active");
+        menu.classList.toggle("active");
+      };
+
+      async function getEmail() {
+        const reponse = await fetch("./api/get-session-user.php", {
+          credentials: "include",
+        });
+
+        const data = await reponse.json();
+
+        if (data.status === "success") {
+          const username = document.getElementById("username");
+          username.textContent = data.username;
+        } else {
+          window.location.href = "login.html";
+        }
+      }
+
+      getEmail();
+    </script>
   </body>
 </html>

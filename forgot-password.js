@@ -20,16 +20,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch("", {
+      const response = await fetch("./api/forgot-password.php", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        credentials:"include",
+        headers: { "Content-Type":"application/json" },
         body: JSON.stringify({
           email: email,
         }),
       });
       const data = await response.json();
       if (data.status === "success") {
+        info.textContent = data.message;
+        info.style.color = "green";
+        setTimeout(() => {
+          window.location.href = "verification-code.html";
+        }, 1500);
       } else {
+        info.textContent = data.message;
+        info.style.color = "red";
       }
     } catch (error) {
       info.textContent = "Erreur serveur. Veuillez réessayer !";

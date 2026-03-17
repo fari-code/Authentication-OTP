@@ -11,8 +11,15 @@ $password = $data["password"] ?? "";
 
 if (empty($username) || empty($email) || empty($password)) {
     echo json_encode([
-        "error" => "error",
+        "status" => false,
         "message" => "Tous les champs sont obligatoires"
+    ]);
+    exit;
+}
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo json_encode([
+        "status" => false,
+        "message" => "Email invalide"
     ]);
     exit;
 }
@@ -20,7 +27,7 @@ $check = $conn->prepare("SELECT id FROM users WHERE email=?");
 $check->execute([$email]);
 if ($check->rowCount() > 0) {
     echo json_encode([
-        "error" => "error",
+        "status" => false,
         "message" => "Email déjà utilisé"
     ]);
     exit;
@@ -37,6 +44,6 @@ $stmt->execute([
 $_SESSION['username'] = $username;
 
 echo json_encode([
-    "status" => "success",
+    "status" => true,
     "message" => "Inscription réussie"
 ]);

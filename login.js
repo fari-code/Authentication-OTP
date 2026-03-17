@@ -25,22 +25,30 @@ document.addEventListener("DOMContentLoaded", () => {
       return regEx.test(email);
     }
 
-    info.textContent = "Redirection...";
-    info.style.color = "green";
-
     try {
-      const response = await fetch("", {
+      const response = await fetch("api/login.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials:"include",
+        credentials: "include",
         body: JSON.stringify({
           email: email,
-          password: password
+          password: password,
         }),
       });
       const data = await response.json();
       if (data.status === "success") {
+        info.textContent = data.message;
+        info.style.color = "green";
+        setTimeout(() => {
+          info.textContent = "Redirection...";
+          info.style.color = "green";
+        }, 1500);
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 2000);
       } else {
+        info.textContent = data.message;
+        info.style.color = "red";
       }
     } catch (error) {
       info.textContent = "Erreur serveur. Veuillez réessayer !";
